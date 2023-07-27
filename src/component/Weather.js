@@ -12,25 +12,33 @@ function Weather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=621adacc39141f4a333b98a241efe478`;
     const fetchApi = async () => {
         await axios.get(url)
-        .then(data => setCity(data?.data));
+            .then(data => setCity(data?.data));
     }
     useEffect(() => {
         fetchApi();
     }, [search]);
-    
-    
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        fetchApi();
+      };
+
 
     return (
         <div className="p-8 mt-20">
-            <div className="flex items-center justify-center">
-                <div className="bg-white p-2 px-5 rounded-full shadow-md flex items-center">
-                    <UilSearch />
-                    <input type="text" className="outline-none focus:ring-blue-500 rounded-full px-3 w-96"
-                        onChange={(event) => { setSearch(event.target.value) }}
-                        placeholder="Search..."
-                    />
-                </div>
-            </div>
+        <div className="flex items-center justify-center">
+          <div className="bg-white p-2 px-5 rounded-full shadow-md flex items-center">
+            <form onSubmit={handleFormSubmit}>
+              <input
+                type="text"
+                className="outline-none focus:ring-blue-500 rounded-full px-3 w-96"
+                onChange={(event) => { setSearch(event.target.value) }}
+                placeholder="Search..."
+              />
+              <button type="submit">Search</button>
+            </form>
+          </div>
+        </div>
 
             {!city ? (
                 <p>No Data Found</p>
