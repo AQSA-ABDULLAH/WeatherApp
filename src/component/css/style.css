@@ -1,19 +1,34 @@
 
-body {
-    background: linear-gradient(130deg, #7a62b1, #2563EB, #6d86be, #38A169);
-}
 
 
 .divTransparent {
-background: rgba(255, 255, 255, .4);
-box-shadow: 0 15px 20px rgba(0, 0, 0, .2);
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+    background: rgba(255, 255, 255, .4);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, .2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.divset{
-background: rgba(255, 255, 255, .4);
-box-shadow: 0 15px 20px rgba(0, 0, 0, .2);
+.divcenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.divset {
+    background: rgba(255, 255, 255, .4);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, .2);
+}
+
+.cold-weather {
+    background-image: url("/src/component/Images/image6.png");
+}
+
+.hot-weather {
+    background-image: url("/src/component/Images/image2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
