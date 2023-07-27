@@ -32,7 +32,7 @@ function Weather() {
               <input
                 type="text"
                 className="outline-none focus:ring-blue-500 rounded-full px-3 w-96"
-                onChange={(event) => { setSearch(event.target.value) }}
+                onChange={(event) => { setSearch(event.target.value)}}
                 placeholder="Search..."
               />
               <button type="submit">Search</button>
