@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import { UilCloud } from '@iconscout/react-unicons';
 import { UilSearch } from '@iconscout/react-unicons';
 import "./css/style.css";
 
 function Weather() {
-    const [city, setCity] = useState();
+    const [city, setCity] = useState({});
     const [search, setSearch] = useState("Lahore");
 
 
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=621adacc39141f4a333b98a241efe478`;
+    const fetchApi = async () => {
+        await axios.get(url)
+        .then(data => setCity(data?.data));
+    }
     useEffect(() => {
-        const fetchApi = async () => {
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=621adacc39141f4a333b98a241efe478`;
-            const response = await fetch(url);
-            const resJson = await response.json();
-            setCity(resJson.main)
-            // await axios.get(url).then((response)=>{
-            //     const myData=(response.data)
-            //     setCity(myData)
-            // })
-            // console.log(city,"******")
-            // .then(data => console.log(data))
-            // .then(data => setCity(data));
-        }
         fetchApi();
     }, [search]);
-
+    
+    
 
     return (
         <div className="p-8 mt-20">
@@ -52,7 +45,7 @@ function Weather() {
                         <div className="flex w-1/2 px-14">
                             <div><i className="fas fa-cloud text-white-500 icon"></i></div>
                             <div className="px-5">
-                                <p className="m-2 text-6xl ">{city.temp}</p>
+                                <p className="m-2 text-6xl ">{city?.wind?.speed}</p>
                                 <p className="m-2 text-lg">Overcast clouds</p>
                             </div>
                         </div>
