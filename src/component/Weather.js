@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { UilCloud } from '@iconscout/react-unicons';
 import { UilSearch } from '@iconscout/react-unicons';
 import "./css/style.css";
 
 function Weather() {
-    const [data, setData] = useState({});
+    const [data, setData] = useState({
+        celcius: 10,
+    });
+
     useEffect(()=>{
-        const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=lahore&appid=621adacc39141f4a333b98a241efe478'
-    })
-    const [search, setSearch] = useState("Lahore");
-
-
-    // const url = ``;
-   
+        const url='https://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=621adacc39141f4a333b98a241efe478&units=metric';
+        axios.get(url)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }, [])
+ 
     
     
 
@@ -22,15 +25,15 @@ function Weather() {
                 <div className="bg-white p-2 px-5 rounded-full shadow-md flex items-center">
                     <UilSearch />
                     <input type="text" className="outline-none focus:ring-blue-500 rounded-full px-3 w-96"
-                        
+                       
                         placeholder="Search..."
                     />
                 </div>
             </div>
 
-            {!city ? (
+            {/* {!city ? (
                 <p>No Data Found</p>
-            ) : (
+            ) : ( */}
                 <div>
                     <div className="flex text-white flex-col mt-5 mr-4">
                         <p className="text-4xl font-bold"></p>
@@ -41,7 +44,7 @@ function Weather() {
                         <div className="flex w-1/2 px-14">
                             <div><i className="fas fa-cloud text-white-500 icon"></i></div>
                             <div className="px-5">
-                                <p className="m-2 text-6xl ">lajoyh</p>
+                                <p className="m-2 text-6xl "></p>
                                 <p className="m-2 text-lg">Overcast clouds</p>
                             </div>
                         </div>
@@ -151,7 +154,7 @@ function Weather() {
                         </div>
                     </div>
                 </div>
-            )}
+            {/* )} */}
         </div>
     );
 }
