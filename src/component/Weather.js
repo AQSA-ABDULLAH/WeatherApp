@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { UilCloud } from '@iconscout/react-unicons';
 import { UilSearch } from '@iconscout/react-unicons';
 import "./css/style.css";
 
 function Weather() {
-    const [city, setCity] = useState({});
+    const [data, setData] = useState({});
+    useEffect(()=>{
+        const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=lahore&appid=621adacc39141f4a333b98a241efe478'
+    })
     const [search, setSearch] = useState("Lahore");
 
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=621adacc39141f4a333b98a241efe478`;
-    const fetchApi = async () => {
-        await axios.get(url)
-        .then(data => setCity(data?.data));
-    }
-    useEffect(() => {
-        fetchApi();
-    }, [search]);
+    // const url = ``;
+   
     
     
 
@@ -26,7 +22,7 @@ function Weather() {
                 <div className="bg-white p-2 px-5 rounded-full shadow-md flex items-center">
                     <UilSearch />
                     <input type="text" className="outline-none focus:ring-blue-500 rounded-full px-3 w-96"
-                        onChange={(event) => { setSearch(event.target.value) }}
+                        
                         placeholder="Search..."
                     />
                 </div>
@@ -37,7 +33,7 @@ function Weather() {
             ) : (
                 <div>
                     <div className="flex text-white flex-col mt-5 mr-4">
-                        <p className="text-4xl font-bold">{search}</p>
+                        <p className="text-4xl font-bold"></p>
                         <p className="text-lg">Wednesday 1 April</p>
                     </div>
 
@@ -45,7 +41,7 @@ function Weather() {
                         <div className="flex w-1/2 px-14">
                             <div><i className="fas fa-cloud text-white-500 icon"></i></div>
                             <div className="px-5">
-                                <p className="m-2 text-6xl ">{city?.wind?.speed}</p>
+                                <p className="m-2 text-6xl ">lajoyh</p>
                                 <p className="m-2 text-lg">Overcast clouds</p>
                             </div>
                         </div>
